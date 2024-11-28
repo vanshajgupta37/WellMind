@@ -20,8 +20,8 @@ import {
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
-import { useAuth } from '../contexts/AuthContext';
-import TherapistDetailModal from './therapist/TherapistDetailModal';
+import { useAuth } from '../../context/AuthContext';
+// import TherapistDetailModal from './therapist/TherapistDetailModal';
 
 const TherapistBrowse = () => {
   const { user } = useAuth();
