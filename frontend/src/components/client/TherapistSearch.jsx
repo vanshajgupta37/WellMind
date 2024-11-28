@@ -246,14 +246,14 @@ const TherapistBrowse = () => {
           )}
         </Grid>
 
-        {selectedTherapist && (
+        {/* {selectedTherapist && (
           <TherapistDetailModal
             open={isDetailModalOpen}
             onClose={handleCloseDetailModal}
             therapist={selectedTherapist}
             onSendRequest={handleSendRequest}
           />
-        )}
+        )} */}
       </Box>
     </Container>
   );

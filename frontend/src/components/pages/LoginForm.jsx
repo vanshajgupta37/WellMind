@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { Mail, Lock, AlertCircle } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
+    password: '',
+    userType: 'client'
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -24,12 +27,44 @@ const LoginForm = () => {
     setError('');
 
     try {
-      // API call would go here
-      console.log('Login attempt with:', formData);
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const endpoint = formData.userType === 'client'
+        ? 'http://localhost:5000/clients/login'
+        : 'http://localhost:5000/therapists/login';
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Login failed');
+      }
+
+      // Store the token in localStorage
+      localStorage.setItem('token', data.token);
+      
+      // Log success and redirect
+      console.log('Login successful:', data);
+      
+      // Redirect to layout page
+      if(formData.userType === 'client'){
+        navigate('/');
+      }
+      else{
+        navigate('/therapistpage');
+      }
+      
+
     } catch (err) {
-      setError('Invalid email or password');
+      setError(err.message || 'Login failed. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -54,6 +89,22 @@ const LoginForm = () => {
               <span>{error}</span>
             </div>
           )}
+
+          <div>
+            <label htmlFor="userType" className="block text-sm font-medium text-gray-700">
+              Sign in as
+            </label>
+            <select
+              id="userType"
+              name="userType"
+              value={formData.userType}
+              onChange={handleChange}
+              className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-teal-500 focus:border-teal-500 sm:text-sm rounded-md"
+            >
+              <option value="client">Client</option>
+              <option value="therapist">Therapist</option>
+            </select>
+          </div>
           
           <div className="rounded-md space-y-4">
             <div>
@@ -123,12 +174,19 @@ const LoginForm = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
             >
               {isLoading ? 'Signing in...' : 'Sign in'}
             </button>
           </div>
         </form>
+
+        <p className="text-center text-sm text-gray-600">
+          Don't have an account?{' '}
+          <Link to="/register" className="font-medium text-teal-600 hover:text-teal-500">
+            Sign up
+          </Link>
+        </p>
       </div>
     </div>
   );
