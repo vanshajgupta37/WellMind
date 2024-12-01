@@ -1,10 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Home, Users, MessageSquare, Settings, LogOut, Brain } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Layout = () => {
+  const navigate = useNavigate();
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [userRole] = useState('client'); // For demo, would come from auth
   const [currentPath, setCurrentPath] = useState('/'); // Simple navigation state
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check if token exists in localStorage
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, []);
+
+  const handleLogout = () => {
+    // Clear token from localStorage
+    localStorage.removeItem('token');
+    // Navigate to login page
+    setIsLoggedIn(false);
+    navigate('/');
+  };
 
   const getMenuItems = (role) => {
     const commonItems = [
@@ -46,25 +64,52 @@ const Layout = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Top Navigation Bar */}
       <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
-            <div className="flex items-center">
+            {/* Left side */}
+            <div className="flex">
               <button
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                className="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none"
+                className="px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500 lg:hidden"
               >
-                {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
+                {isSidebarOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </button>
-              <div className="ml-4 flex items-center">
+              <div className="flex-shrink-0 flex items-center">
                 <Brain className="h-6 w-6 text-teal-600" />
                 <span className="ml-2 text-xl font-semibold text-teal-600">WellMind</span>
               </div>
             </div>
+
+            {/* Right side */}
             <div className="flex items-center">
-              <button className="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
-                <LogOut className="w-4 h-4 mr-2" />
-                Logout
-              </button>
+              {isLoggedIn ? (
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
+                >
+                  <LogOut className="h-5 w-5 mr-2" />
+                  Logout
+                </button>
+              ) : (
+                <div className="flex items-center">
+                  <button
+                    onClick={() => navigate('/login')}
+                    className="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md mr-2"
+                  >
+                    Login
+                  </button>
+                  <button
+                    onClick={() => navigate('/register')}
+                    className="flex items-center px-3 py-2 text-sm text-white bg-teal-600 hover:bg-teal-700 rounded-md"
+                  >
+                    Register
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
