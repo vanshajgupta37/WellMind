@@ -1,30 +1,37 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Layout from './components/pages/Layout'
-import RegisterForm from './components/pages/RegisterForm'
-import LoginForm from './components/pages/LoginForm'
-import AdminDashboard from './components/admin/AdminDashboard'
-import TherapistPage from './components/pages/TherapistPage'
-import FindTherapist from './components/pages/FindTherapist'
-import MySessions from './components/pages/MySessions'
-import Settings from './components/pages/Settings'
-import Home from './components/pages/Home'
+import React from 'react'
+import { Route,Routes } from 'react-router-dom'
+import './App.css';
+import Home from './pages/Home'
+import Therapists from './pages/Therapists'
+import Contact from './pages/Contact'
+import About from './pages/About'
+import MyProfile from './pages/MyProfile'
+import MyAppointments from './pages/MyAppointments'
+import Appointment from './pages/Appointment'
+import Login from './pages/Login'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer';
 
-function App() {
+const App = () => {
   return (
-    <Router>
+    <div className='mx-4 sm:mx-[10%] '>
+    <Navbar/>
       <Routes>
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/register" element={<RegisterForm />} />
-        <Route path="/therapistpage" element={<TherapistPage />} />
-        
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="findtherapist" element={<FindTherapist />} />
-          <Route path="mysessions" element={<MySessions />} />
-          <Route path="settings" element={<Settings />} />
-        </Route>
+        <Route path='/' element={<Home/>} />
+        <Route path='/therapists' element={<Therapists/>} />
+        <Route path='/therapists/:speciality' element={<Therapists/>} />
+        <Route path='/login' element={<Login/>} />
+        <Route path='/about' element={<About/>} />
+        <Route path='/contact' element={<Contact/>} />
+        <Route path='/my-profile' element={<MyProfile/>} />
+        <Route path='/my-appointments' element={<MyAppointments/>} />
+        <Route path='/appointment/:docId' element={<Appointment/>} />
+
+
+
       </Routes>
-    </Router>
+      <Footer/>
+    </div>
   )
 }
 
