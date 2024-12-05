@@ -2,6 +2,7 @@ import React from 'react'
 import { assets } from '../assets/assets_frontend/assets'
 import { Brain } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+const currentYear = new Date().getFullYear();
 
 const Footer = () => {
     const navigate=useNavigate();
@@ -51,7 +52,7 @@ const Footer = () => {
             {/*-------Bottom Section-------*/}
             <div>
             <hr/>
-                <p className='py-5 text-sm text-center'>© 2021 Wellmind. All Rights Reserved</p> 
+                <p className='py-5 text-sm text-center'>© {currentYear} Wellmind. All Rights Reserved</p> 
             </div>
         </div>
     </div>
