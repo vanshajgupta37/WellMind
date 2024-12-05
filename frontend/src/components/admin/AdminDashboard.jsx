@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { 
     Box, 
     Typography, 
-    Grid, 
     Paper, 
     Table, 
     TableBody, 
@@ -23,7 +22,7 @@ import {
     Psychology as TherapistsIcon, 
     AdminPanelSettings as AdminIcon 
 } from '@mui/icons-material';
-
+import Grid from '@mui/material/Grid2';
 const AdminDashboard = () => {
     const [users, setUsers] = useState([]);
     const [therapists, setTherapists] = useState([]);
