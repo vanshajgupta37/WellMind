@@ -29,25 +29,27 @@ const Therapists = () => {
         <div className='flex flex-col sm:flex-row items-start gap-5 mt-5'>
           <button className={`py-1 px-3 border rounded text-sm transition-all sm:hidden ${showFilter ? 'bg-primary text-white' : ''}`} onClick={()=> setShowFilter(prev => !prev )}>Filters</button>
           <div className={`flex-col gap-4 text-sm text-gray-600 ${showFilter ? 'flex' : 'hidden sm:flex'}`}>
-            <p onClick={()=>speciality==='General physician'?navigate('/therapists') : navigate('/therapists/General physician')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality==="General physician"?"bg-indigo-100 text-black ": ""}`}>General physician</p>
+            <p onClick={()=>speciality==='Anxiety'?navigate('/therapists') : navigate('/therapists/Anxiety')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality==="Anxiety"?"bg-indigo-100 text-black ": ""}`}>Anxiety</p>
 
 
 
 
-            <p onClick={()=>speciality==='Gynecologist'?navigate('/therapists') : navigate('/therapists/Gynecologist')}  className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality==="Gynecologist"?"bg-indigo-100 text-black ": ""}`}>Gynecologist</p>
+            <p onClick={()=>speciality==='Addiction'?navigate('/therapists') : navigate('/therapists/Addiction')}  className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality==="Addiction"?"bg-indigo-100 text-black ": ""}`}>Addiction</p>
 
 
-            <p onClick={()=>speciality==='Dermatologist'?navigate('/therapists') : navigate('/therapists/Dermatologist')}  className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality==="Dermatologist"?"bg-indigo-100 text-black ": ""}`}>Dermatologist</p>
+            <p onClick={()=>speciality==='Social Anxiety'?navigate('/therapists') : navigate('/therapists/Social Anxiety')}  className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality==="Social Anxiety"?"bg-indigo-100 text-black ": ""}`}>Social Anxiety</p>
 
 
-            <p onClick={()=>speciality==='Pediatricians'?navigate('/therapists') : navigate('/therapists/Pediatricians')}  className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality==="Pediatricians"?"bg-indigo-100 text-black ": ""}`}>Pediatricians</p>
+            <p onClick={()=>speciality==='Depression'?navigate('/therapists') : navigate('/therapists/Depression')}  className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality==="Depression"?"bg-indigo-100 text-black ": ""}`}>Depression</p>
 
 
-            <p onClick={()=>speciality==='Neurologist'?navigate('/therapists') : navigate('/therapists/Neurologist')}  className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality==="Neurologist"?"bg-indigo-100 text-black ": ""}`}>Neurologist</p>
+            <p onClick={()=>speciality==='Disorder'?navigate('/therapists') : navigate('/therapists/Disorder')}  className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality==="Disorder"?"bg-indigo-100 text-black ": ""}`}>Disorder</p>
 
 
-            <p onClick={()=>speciality==='Gastroenterologist'?navigate('/therapists') : navigate('/therapists/Gastroenterologist')}  className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality==="Gastroenterologist"?"bg-indigo-100 text-black ": ""}`}>Gastroenterologist</p>
+            {/* <p onClick={()=>speciality==='Disorders'?navigate('/therapists') : navigate('/therapists/Disorders')}  className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality==="Disorders"?"bg-indigo-100 text-black ": ""}`}>Disorders</p> */}
 
+
+            
           </div>
           <div className='w-full grid grid-cols-auto gap-4 gap-y-6'>
               {

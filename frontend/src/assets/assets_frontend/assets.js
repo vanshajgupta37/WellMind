@@ -30,13 +30,17 @@ import doc12 from './doc12.png'
 import doc13 from './doc13.png'
 import doc14 from './doc14.png'
 import doc15 from './doc15.png'
-import Dermatologist from './Dermatologist.svg'
-import Gastroenterologist from './Gastroenterologist.svg'
+import Depression from './Depression.svg'
+import Social_Anxiety from './Social_Anxiety.svg'
 import General_physician from './General_physician.svg'
-import Gynecologist from './Gynecologist.svg'
-import Neurologist from './Neurologist.svg'
-import Pediatricians from './Pediatricians.svg'
-
+import Addiction from './Addiction.svg'
+// import Social Anxiety from './Social Anxiety.svg'
+import Disorder from './Disorder.svg'
+import th1 from './th1.png'
+import grp_main from './grp_main.png'
+import header_grp from './header_grp.png'
+import grp_header_main from './grp_header_main.png'
+import group_header from './group_header.png'
 
 export const assets = {
     appointment_img,
@@ -55,34 +59,37 @@ export const assets = {
     dropdown_icon,
     upload_icon,
     stripe_logo,
-    razorpay_logo
+    razorpay_logo,
+    th1,
+    grp_main,
+    header_grp,
+    grp_header_main,
+    group_header
 }
 
 export const specialityData = [
     {
-        speciality: 'General physician',
+        speciality: 'Anxiety',
         image: General_physician
     },
     {
-        speciality: 'Gynecologist',
-        image: Gynecologist
+        speciality: 'Addiction',
+        image: Addiction
     },
     {
-        speciality: 'Dermatologist',
-        image: Dermatologist
+        speciality: 'Social Anxiety',
+        image: Social_Anxiety
     },
     {
-        speciality: 'Pediatricians',
-        image: Pediatricians
+        speciality: 'Depression',
+        image: Depression
     },
     {
-        speciality: 'Neurologist',
-        image: Neurologist
+        speciality: 'Disorder',
+        image: Disorder
     },
-    {
-        speciality: 'Gastroenterologist',
-        image: Gastroenterologist
-    },
+    
+    
 ]
 
 export const therapists = [
@@ -90,7 +97,7 @@ export const therapists = [
         _id: 'doc1',
         name: 'Dr. Richard James',
         image: doc1,
-        speciality: 'General physician',
+        speciality: 'Anxiety',
         degree: 'MBBS',
         experience: '4 Years',
         about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
@@ -104,7 +111,7 @@ export const therapists = [
         _id: 'doc2',
         name: 'Dr. Emily Larson',
         image: doc2,
-        speciality: 'Gynecologist',
+        speciality: 'Addiction',
         degree: 'MBBS',
         experience: '3 Years',
         about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
@@ -118,7 +125,7 @@ export const therapists = [
         _id: 'doc3',
         name: 'Dr. Sarah Patel',
         image: doc3,
-        speciality: 'Dermatologist',
+        speciality: 'Depression',
         degree: 'MBBS',
         experience: '1 Years',
         about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
@@ -132,7 +139,7 @@ export const therapists = [
         _id: 'doc4',
         name: 'Dr. Christopher Lee',
         image: doc4,
-        speciality: 'Pediatricians',
+        speciality: 'Disorder',
         degree: 'MBBS',
         experience: '2 Years',
         about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
@@ -146,7 +153,7 @@ export const therapists = [
         _id: 'doc5',
         name: 'Dr. Jennifer Garcia',
         image: doc5,
-        speciality: 'Neurologist',
+        speciality: 'Social Anxiety',
         degree: 'MBBS',
         experience: '4 Years',
         about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
@@ -160,7 +167,7 @@ export const therapists = [
         _id: 'doc6',
         name: 'Dr. Andrew Williams',
         image: doc6,
-        speciality: 'Neurologist',
+        speciality: 'Social Anxiety',
         degree: 'MBBS',
         experience: '4 Years',
         about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
@@ -174,7 +181,7 @@ export const therapists = [
         _id: 'doc7',
         name: 'Dr. Christopher Davis',
         image: doc7,
-        speciality: 'General physician',
+        speciality: 'Anxiety',
         degree: 'MBBS',
         experience: '4 Years',
         about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
@@ -188,7 +195,7 @@ export const therapists = [
         _id: 'doc8',
         name: 'Dr. Timothy White',
         image: doc8,
-        speciality: 'Gynecologist',
+        speciality: 'Addiction',
         degree: 'MBBS',
         experience: '3 Years',
         about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
@@ -202,7 +209,7 @@ export const therapists = [
         _id: 'doc9',
         name: 'Dr. Ava Mitchell',
         image: doc9,
-        speciality: 'Dermatologist',
+        speciality: 'Depression',
         degree: 'MBBS',
         experience: '1 Years',
         about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
@@ -216,7 +223,7 @@ export const therapists = [
         _id: 'doc10',
         name: 'Dr. Jeffrey King',
         image: doc10,
-        speciality: 'Pediatricians',
+        speciality: 'Disorder',
         degree: 'MBBS',
         experience: '2 Years',
         about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
@@ -230,7 +237,7 @@ export const therapists = [
         _id: 'doc11',
         name: 'Dr. Zoe Kelly',
         image: doc11,
-        speciality: 'Neurologist',
+        speciality: 'Social Anxiety',
         degree: 'MBBS',
         experience: '4 Years',
         about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
@@ -244,7 +251,7 @@ export const therapists = [
         _id: 'doc12',
         name: 'Dr. Patrick Harris',
         image: doc12,
-        speciality: 'Neurologist',
+        speciality: 'Social Anxiety',
         degree: 'MBBS',
         experience: '4 Years',
         about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
@@ -258,7 +265,7 @@ export const therapists = [
         _id: 'doc13',
         name: 'Dr. Chloe Evans',
         image: doc13,
-        speciality: 'General physician',
+        speciality: 'Anxiety',
         degree: 'MBBS',
         experience: '4 Years',
         about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
@@ -272,7 +279,7 @@ export const therapists = [
         _id: 'doc14',
         name: 'Dr. Ryan Martinez',
         image: doc14,
-        speciality: 'Gynecologist',
+        speciality: 'Addiction',
         degree: 'MBBS',
         experience: '3 Years',
         about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
@@ -286,7 +293,7 @@ export const therapists = [
         _id: 'doc15',
         name: 'Dr. Amelia Hill',
         image: doc15,
-        speciality: 'Dermatologist',
+        speciality: 'Depression',
         degree: 'MBBS',
         experience: '1 Years',
         about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
