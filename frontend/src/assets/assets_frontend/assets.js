@@ -37,10 +37,10 @@ import Addiction from './Addiction.svg'
 // import Social Anxiety from './Social Anxiety.svg'
 import Disorder from './Disorder.svg'
 import th1 from './th1.png'
-import grp_main from './grp_main.png'
-import header_grp from './header_grp.png'
-import grp_header_main from './grp_header_main.png'
-import group_header from './group_header.png'
+// import grp_main from './grp_main.png'
+// import header_grp from './header_grp.png'
+// import grp_header_main from './grp_header_main.png'
+// import group_header from './group_header.png'
 
 export const assets = {
     appointment_img,

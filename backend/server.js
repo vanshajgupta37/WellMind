@@ -1,14 +1,18 @@
 import express from 'express';
 import cors from 'cors';
+import 'dotenv/config'
+import connectDB from './config/mongodb.js';
+import connectCloudinary from './config/cloudinary.js';
+import adminRouter from './routes/adminRoutes.js';
 
 
+//app  config
 const app=express();
 app.use(express.json());
 
-import 'dotenv/config'
-import mongoose from 'mongoose';
-import clientRoutes from "./routes/clientRoutes.js";
-import therapistRoutes from "./routes/therapistRoutes.js";
+const PORT = process.env.PORT || 5000;
+connectDB();
+connectCloudinary();
 
 const corsOptions = {
     origin: process.env.CORS_ORIGIN || "*", // Adjust according to your frontend domain or use '*' for all origins
@@ -17,15 +21,17 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-mongoose.connect(process.env.MONGODB_URL)
-.then(()=>console.log("Connected to MongoDB"))
-.catch((error)=>console.log(error));
 
-app.use("/clients",clientRoutes);
-app.use("/therapists",therapistRoutes);
+//api endpoints
+
+app.use('/api/admin',adminRouter)
+// localhost:5000/api/admin/add-doctor
 
 
-const PORT = process.env.PORT || 5000;
+app.get("/",(req,res)=>{    
+    res.send("Server is ready");
+});
+
 
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`);
