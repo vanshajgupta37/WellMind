@@ -28,7 +28,7 @@ const addTherapist= async(req,res)=>{
 
         //uploading image to cloudinary
         const imageUpload=await cloudinary.uploader.upload(imageFile.path,{resource_type:"image"})
-
+        
         const imageUrl=imageUpload.secure_url;
 
         const therapistData={
@@ -81,5 +81,16 @@ const loginAdmin=async(req,res)=>{
     }
 }
 
+// API to get all therapist list for admin panel
+const allTherapist = async (req, res) => {
+    try{
+        const therapists = await TherapistModel.find({}).select('-password')
+        res.json({success:true, therapists})
 
-export {addTherapist,loginAdmin}
+    }
+    catch (error) {
+        console.log(error)
+        res.json({success: false, message: error.message})
+    }
+}
+export {addTherapist,loginAdmin, allTherapist}
