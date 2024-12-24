@@ -2,12 +2,17 @@ import React,{useState} from "react";
 import { assets } from "../assets/assets_frontend/assets";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Brain } from 'lucide-react';
-
+import { AppContext } from "../context/AppContext";
+import { useContext } from "react";
 const Navbar = () => {
     const navigate= useNavigate();
     const[showMenu, setShowMenu]=useState(false);
-    const [token,setToken]=useState(true);
+  const {token, setToken}=useContext(AppContext)
 
+  const logout=()=>{
+    setToken(false);
+    localStorage.removeItem('token');
+  }
   return (
     <div className="flex items-center justify-between text-sm py-4 mb-5 border-b border-b-gray-400">
       {/* <img onClick={()=>{
@@ -56,7 +61,7 @@ const Navbar = () => {
                         navigate('/my-appointments')
                     }}
                     className="hover:text-black cursor-pointer">My Appointments</p>
-                    <p onClick={()=>setToken(false)}
+                    <p onClick={logout}
                     className="hover:text-black cursor-pointer">Logout</p>
                 </div>
             </div>
