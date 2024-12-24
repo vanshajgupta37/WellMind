@@ -1,5 +1,10 @@
 # WellMind
 
+<div style="text-align: center;">
+
+
+![WellMind Dashboard](./frontend/public/readme_img.png)
+
 *WellMind* is a modern web application designed to connect patients with licensed therapists, offering seamless mental health services. The platform emphasizes accessibility, security, and a user-friendly experience, ensuring that mental health care is just a few clicks away.
 
 ## Features
