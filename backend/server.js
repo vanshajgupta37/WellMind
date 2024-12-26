@@ -17,7 +17,7 @@ connectCloudinary();
 const corsOptions = {
     origin: process.env.CORS_ORIGIN || "*", // Adjust according to your frontend domain or use '*' for all origins
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    allowedHeaders: ["Content-Type" , "Authorization", "token"]
+    allowedHeaders: ["Content-Type" , "Authorization", "token","user_token"]
 };
 app.use(cors(corsOptions));
 
