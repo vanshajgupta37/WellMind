@@ -3,14 +3,18 @@ import { assets } from '../assets/assets_admin/assets'
 import { AdminContext } from '../context/AdminContext'
 import {useNavigate} from 'react-router-dom';
 import { Brain } from 'lucide-react';
+import { TherapistContext } from '../context/TherapistContext';
 const Navbar = () => {
-    const {token,setToken}=useContext(AdminContext);
+    const {token,setToken} = useContext(AdminContext);
+    const {dToken, setDToken} = useContext(TherapistContext)
     const navigate=useNavigate();
     
     const logout=()=>{
             navigate('/');
             token && setToken('');
             token && localStorage.removeItem('token');
+            dToken && setDToken('')
+            dToken && localStorage.removeItem('dToken')
     }
 
   return (

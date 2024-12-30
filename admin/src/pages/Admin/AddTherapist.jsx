@@ -18,6 +18,7 @@ const AddTherapist = () => {
     const [degree, setDegree] = useState('')
     const [address1, setAddress1] = useState('')
     const [address2, setAddress2] = useState('')
+    const [link, setLink] = useState('')
 
     const {backendUrl, token} = useContext(AdminContext)
 
@@ -42,7 +43,9 @@ const AddTherapist = () => {
             formData.append('speciality',speciality)
             formData.append('degree',degree)
             formData.append('address',JSON.stringify({line1:address1, line2:address2}))
-            
+            formData.append('meet',link)
+
+        
             //console.log formdata
 
             formData.forEach((value, key) => {
@@ -62,6 +65,7 @@ const AddTherapist = () => {
                 setDegree('')
                 setAbout('')
                 setFees('')
+                setLink('')
 
             } else{
                 toast.error(data.message)
@@ -151,8 +155,14 @@ const AddTherapist = () => {
             <div className="flex-1 flex flex-col gap-1">
               <p>Address</p>
               <input onChange={(e)=> setAddress1(e.target.value)} value={address1} className="border rounded px-3 py-2" type="text" placeholder="address 1" required />
-              <input onChange={(e)=> setAddress2(e.target.value)} value={address2} className="border rounded px-3 py-2" type="text" placeholder="address 2" reuired />
+              <input onChange={(e)=> setAddress2(e.target.value)} value={address2} className="border rounded px-3 py-2" type="text" placeholder="address 2" required />
             </div>
+
+            <div className="flex-1 flex flex-col gap-1">
+              <p>Google Meet Link</p>
+              <input onChange={(e)=> setLink(e.target.value)} value={link} className="border rounded px-3 py-2" type="text" placeholder="link" required />
+            </div>
+
           </div>
         </div>
 

@@ -12,6 +12,7 @@ const appointmentSchema = mongoose.Schema(
         cancelled:{type:Boolean,default:false},
         payment:{type:Boolean,default:false},
         isCompleted:{type:Boolean,default:false},
+        meet:{type:String, default:""}
     }
 )
 

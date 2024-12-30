@@ -3,16 +3,19 @@ import bcrypt from 'bcrypt'
 import {v2 as cloudinary} from 'cloudinary'
 import jwt from 'jsonwebtoken';
 import TherapistModel from '../models/TherapistModel.js'
+import appointmentModel from '../models/appointmentModel.js';
+import userModel from '../models/userModel.js';
 //API
 const addTherapist= async(req,res)=>{
     try{
-        const {name, email, password, speciality, degree, experience, about,  fees, address}=req.body;
+        const {name, email, password, speciality, degree, experience, about,  fees, address, meet}=req.body;
         const imageFile=req.file
         //checking for all data to add doctor
-        if(!name || !email || !speciality || !degree || !experience || !about || !fees || !address){
+        if(!name || !email || !speciality || !degree || !experience || !about || !fees || !address || !meet){
             return res.status(400).json({success:false,message:"All fields are required"})
 
         }
+
         //validating email format
         if(!validator.isEmail(email)){
             return res.status(400).json({success:false,message:"Enter a valid email"})
@@ -30,7 +33,8 @@ const addTherapist= async(req,res)=>{
         const imageUpload=await cloudinary.uploader.upload(imageFile.path,{resource_type:"image"})
         
         const imageUrl=imageUpload.secure_url;
-
+        
+        
         const therapistData={
             name,
             email,
@@ -42,7 +46,8 @@ const addTherapist= async(req,res)=>{
             fees,
             address:JSON.parse(address),
             image:imageUrl,
-            date:Date.now()
+            date:Date.now(),
+            meet
         }
 
         const newTherapist=new TherapistModel(therapistData);
@@ -93,4 +98,71 @@ const allTherapist = async (req, res) => {
         res.json({success: false, message: error.message})
     }
 }
-export {addTherapist,loginAdmin, allTherapist}
+
+// API to get all appointments list
+const appointmentsAdmin = async (req, res) =>{
+    try {
+        const appointments = await appointmentModel.find({})
+        res.json({success:true, appointments})
+    }
+    catch (error) {
+        console.log(error)
+        res.json({success: false, message: error.message})
+    }
+}
+
+
+//API for appointment cancellation
+const appointmentCancel = async (req, res) => {
+    try {
+        const { appointmentId } = req.body;
+        const appointmentData = await appointmentModel.findById(appointmentId);
+
+        await appointmentModel.findByIdAndUpdate(appointmentId, {
+            cancelled: true,
+        });
+
+        //releasing doctor slot
+
+        const { therapistId, slotDate, slotTime } = appointmentData;
+
+        const therapistData = await TherapistModel.findById(therapistId);
+
+        let slots_booked = therapistData.slots_booked;
+
+        slots_booked[slotDate] = slots_booked[slotDate].filter(
+            (slot) => slot !== slotTime
+        );
+
+        await TherapistModel.findByIdAndUpdate(therapistId, { slots_booked });
+        res.json({ success: true, message: "Appointment Cancelled" });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+}
+
+// API to get dashboard data for admin panel
+const adminDashboard = async (req, res) => {
+    try{
+
+        const therapists = await TherapistModel.find({})
+        const users = await userModel.find({})
+        const appointments = await appointmentModel.find({})
+
+        const dashData = {
+            therapists: therapists.length,
+            appointments: appointments.length,
+            clients: users.length,
+            latestAppointments: appointments.reverse().slice(0,5)
+        }
+
+        res.json({success: true, dashData})
+
+    } catch (error) {
+        console.log(error)
+        res.json({success: false, message: error.message})
+    }
+}
+
+export {addTherapist, loginAdmin, allTherapist, appointmentsAdmin, appointmentCancel, adminDashboard}

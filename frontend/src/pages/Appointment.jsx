@@ -202,7 +202,7 @@ const Appointment = () => {
         (
           <div>
           <p className='text-gray-400'>No slots Today!</p>
-          <p className='text-gray-400'>Book for upcoming days :</p>
+          <p className='text-gray-400'>Book for upcoming days..</p>
           </div>
         )}
         </div>
