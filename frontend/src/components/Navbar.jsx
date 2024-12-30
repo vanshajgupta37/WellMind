@@ -44,7 +44,7 @@ const Navbar = () => {
           <li className="py-1">Contact</li>
           <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
-        <a target="_blank" href={import.meta.env.VITE_ADMIN_PANEL} class="border px-5 text-xs py-1.5 rounded-full">Admin Panel</a>
+        <a target="_blank" href={import.meta.env.VITE_ADMIN_PANEL} className="border px-5 text-xs py-1.5 rounded-full" style={{ cursor: 'pointer' }}>Admin Panel</a>
       </ul>
       <div className="flex items-center gap-4">
       {
