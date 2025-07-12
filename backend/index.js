@@ -15,14 +15,15 @@ connectDB();
 connectCloudinary();
 
 const corsOptions = {
-    // origin: '*',
-    origin: '*', // Adjust according to your frontend domain or use '*' for all origins
+    origin: ['https://well-mind2-adminside.vercel.app'],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    allowedHeaders: ["Content-Type" , "Authorization", "token","user_token", "dToken"],
+    allowedHeaders: ["Content-Type", "Authorization", "token", "user_token", "dToken"],
     credentials: true,
     optionsSuccessStatus: 204,
 };
+
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions))
 
 // app.use(cors())
 
